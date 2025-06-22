@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>موسوعة الأدوية | مصطفى يوسف</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fbfd;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #004e89;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .search-box {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .search-box input {
+      padding: 0.7rem;
+      width: 60%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .drug-list {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .drug-item {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📘 موسوعة الأدوية السورية</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="pharmacy.html">الموسوعة</a></li>
+        <li><a href="contact.html">تواصل معي</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" onkeyup="filterDrugs()" placeholder="ابحث عن اسم الدواء أو المادة الفعالة..." />
+  </div>
+
+  <div class="drug-list" id="drugList">
+    <div class="drug-item"><strong>Paracetamol</strong> - خافض حرارة، مسكن ألم، متوفر بأسماء عديدة</div>
+    <div class="drug-item"><strong>Amoxicillin</strong> - مضاد حيوي واسع الطيف، يستخدم في الالتهابات البكتيرية</div>
+    <div class="drug-item"><strong>Amlodipine</strong> - دواء للضغط من نوع حاصر قنوات الكالسيوم</div>
+    <div class="drug-item"><strong>Omeprazole</strong> - مثبط مضخة البروتون للمعدة والقرحة الهضمية</div>
+    <div class="drug-item"><strong>Metformin</strong> - يستخدم لضبط سكر الدم في داء السكري النوع الثاني</div>
+  </div>
+
+  <footer>
+    من تنفيذ المهندس مصطفى يوسف – الإصدار الأول للموسوعة الدوائية السورية
+  </footer>
+
+  <script>
+    function filterDrugs() {
+      var input, filter, list, items, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      list = document.getElementById("drugList");
+      items = list.getElementsByClassName("drug-item");
+
+      for (var i = 0; i < items.length; i++) {
+        txtValue = items[i].textContent || items[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          items[i].style.display = "";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
